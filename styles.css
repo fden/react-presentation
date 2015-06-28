@@ -1,0 +1,30 @@
+html, body {margin:0;padding:0;height:100%;}
+
+body {
+    overflow:hidden;
+}
+
+li {
+	font-size: 4vh;
+}
+
+h2 {
+	font-size: 8vh;
+}
+
+h3 {
+	font-size: 6vh;
+}
+
+.overlay {
+  height:100vh;
+  min-height:100vh;	
+}
+
+.slide {
+  padding: 3% 4%;
+}
+
+.hidden {
+	display: none;
+}

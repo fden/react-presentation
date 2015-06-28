@@ -1,8 +1,10 @@
+var React = require('react');
+
 var Overview = React.createClass({
 	render: function() {
 		return (
-			<div>
-				<h2>Overview</h2>
+			<div className="overlay">
+				<h3>What makes React.js special?</h3>
 				<div>
 					<ul>
 						<li>Virtual DOM</li>
@@ -15,3 +17,5 @@ var Overview = React.createClass({
 		);
 	}
 });
+
+module.exports = Overview;

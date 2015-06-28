@@ -1,7 +1,8 @@
 var Footer = React.createClass({
 	render: function(){
+		var visible = this.props.visible ? '' : 'hidden'
 		return (
-			<div>
+			<div className={visible}>
 				<a 
 					onClick={this.props.prevPage.bind(null)}
 				>back | </a>

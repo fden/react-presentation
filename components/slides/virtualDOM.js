@@ -1,3 +1,5 @@
+var React = require('react');
+
 var VirtualDOM = React.createClass({
 	render: function() {
 		return (
@@ -7,3 +9,5 @@ var VirtualDOM = React.createClass({
 		);
 	}
 });
+
+module.exports = VirtualDOM;

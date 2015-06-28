@@ -1,3 +1,5 @@
+var React = require('react');
+
 var Integration = React.createClass({
 	render: function() {
 		return (
