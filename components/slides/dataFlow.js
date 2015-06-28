@@ -1,3 +1,5 @@
+var React = require('react');
+
 var DataFlow = React.createClass({
 	render: function() {
 		return (
@@ -6,4 +8,8 @@ var DataFlow = React.createClass({
 			</h2>
 		);
 	}
+
+
 });
+
+module.exports = DataFlow;

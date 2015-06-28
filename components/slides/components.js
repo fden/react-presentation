@@ -1,3 +1,5 @@
+var React = require('react');
+
 var Components = React.createClass({
 	render: function() {
 		return (
@@ -6,4 +8,8 @@ var Components = React.createClass({
 			</h2>
 		);
 	}
+
+
 });
+
+module.exports = Components;

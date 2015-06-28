@@ -1,9 +1,13 @@
+var React = require('react');
+
 var MenuLink = React.createClass({
 	render: function() {
 		return (
 			<a
+				onClick={this.props.setPage.bind(null, this.props.page)}
 			>{this.props.name}</a>
 		);
 	}
 });
-				// onClick={this.props.setPage.bind(null, this.props.page)}
+
+module.exports = MenuLink;

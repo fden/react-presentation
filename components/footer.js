@@ -1,3 +1,5 @@
+var React = require('react');
+
 var Footer = React.createClass({
 	render: function(){
 		var visible = this.props.visible ? '' : 'hidden'
@@ -13,3 +15,5 @@ var Footer = React.createClass({
 		);
 	}
 });
+
+module.exports = Footer;

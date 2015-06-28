@@ -16,3 +16,5 @@ var Integration = React.createClass({
 		);
 	}
 });
+
+module.exports = Integration;

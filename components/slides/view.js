@@ -7,3 +7,5 @@ var View = React.createClass({
 		);
 	}
 });
+
+module.exports = View;

@@ -1,10 +1,12 @@
-var Intro = require('react');
+var React = require('react');
 var Intro = require('./components/slides/intro');
 var Overview = require('./components/slides/overview');
 var VirtualDOM = require('./components/slides/virtualDOM');
 var View = require('./components/slides/view');
 var Components = require('./components/slides/components');
 var Integration = require('./components/slides/integration');
+var Footer = require('./components/footer');
+var Header = require('./components/header');
 
 
 var Slides = React.createClass({

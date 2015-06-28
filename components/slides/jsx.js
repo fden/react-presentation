@@ -9,3 +9,5 @@ var Jsx = React.createClass({
 		);
 	}
 });
+
+module.exports = Jsx;

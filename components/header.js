@@ -1,3 +1,6 @@
+var React = require('react');
+var MenuLink = require('./components/MenuLink');
+
 var Header = React.createClass({
 	render: function(){
 		var name = 'integration';
@@ -10,3 +13,5 @@ var Header = React.createClass({
 		);
 	}
 });
+
+module.exports = Header;
