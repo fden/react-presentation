@@ -4,7 +4,8 @@
   "description": "",
   "main": "slides.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "postinstall": "webpack"
   },
   "repository": {
     "type": "git",
