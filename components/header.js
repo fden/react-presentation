@@ -1,5 +1,5 @@
 var React = require('react');
-var MenuLink = require('./components/MenuLink');
+var MenuLink = require('./MenuLink');
 
 var Header = React.createClass({
 	render: function(){

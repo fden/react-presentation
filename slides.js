@@ -11,23 +11,12 @@ var Header = require('./components/header');
 
 var Slides = React.createClass({
 	componentDidMount: function() {
-		document.addEventListener("keydown", this.handleKeyDown, false);
+		window.addEventListener("onKeyDown", this.handleKeyDown, false);
 	},
 
 	componentWillUnMount: function() {
-	    document.removeEventListener("keydown", this.handleKeyDown, false)
+	    window.removeEventListener("onKeyDown", this.handleKeyDown, false)
 	},
-
-	componentDidMount: function () {
-	    var slide = this.props.params.slide;
-	    console.log(slide);
-	    for (var i = this.state.slides.length - 1; i >= 0; i--) {
-	    	if(this.state.slides[i].name = slide) {
-	    		this._setPage(i);
-	    	}
-	    };
-	    this.setState({ message: message });
-  	},
 
   getInitialState: function() {
     return {
