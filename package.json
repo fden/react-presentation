@@ -5,7 +5,7 @@
   "main": "slides.js",
   "scripts": {
     "start": "node index.js",
-    "postinstall": "webpack"
+    "postinstall": "gulp"
   },
   "repository": {
     "type": "git",
@@ -24,7 +24,6 @@
     "gulp-concat": "^2.6.0",
     "gulp-react": "^3.0.1",
     "gulp-sourcemaps": "^1.5.2",
-    "jsx-loader": "^0.13.2",
     "node-libs-browser": "^0.5.2",
     "react": "^0.13.3",
     "react-markdown": "^1.0.3",
@@ -39,6 +38,7 @@
     "marked": "^0.3.3",
     "react-markdown-file": "0.0.4",
     "react-markdown-textarea": "^1.0.0",
-    "webpack": "^1.10.0"
+    "webpack": "^1.10.0",
+    "jsx-loader": "^0.13.2"
   }
 }
