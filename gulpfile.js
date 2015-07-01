@@ -10,10 +10,10 @@ var reactify = require('reactify');
 gulp.task('browserify', function(){
   var b = browserify();
   b.transform(reactify); // use the reactify transform
-  b.add('./slides.js');
+  b.add('./app.js');
   return b.bundle()
     .pipe(source('all.js'))
-    .pipe(gulp.dest('./dist'));
+    .pipe(gulp.dest('./build'));
 });
 
  

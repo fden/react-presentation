@@ -1,18 +1,13 @@
 var React = require('react');
-var Intro = require('./components/slides/intro');
-var Overview = require('./components/slides/overview');
-var VirtualDOM = require('./components/slides/virtualDOM');
-var View = require('./components/slides/view');
-var Components = require('./components/slides/components');
-var Integration = require('./components/slides/integration');
-var JSX = require('./components/slides/jsx');
-var Footer = require('./components/footer');
-var Header = require('./components/header');
-
-var ReactRouter = require('react-router');
-var Router = ReactRouter.Router;
-var Route = ReactRouter.Route;
-var Link = ReactRouter.Link;
+var Intro = require('./slides/intro');
+var Overview = require('./slides/overview');
+var VirtualDOM = require('./slides/virtualDOM');
+var View = require('./slides/view');
+var Components = require('./slides/components');
+var Integration = require('./slides/integration');
+var JSX = require('./slides/jsx');
+var Footer = require('./footer');
+var Header = require('./header');
 
 
 var Slides = React.createClass({
@@ -109,22 +104,4 @@ var Slides = React.createClass({
   }
 });
 
-// React.render(
-//   <Slides />,
-//   document.getElementById('slides')
-// );
-
-// var Route = ReactRouter.Route;
-var history = ReactRouter.HashHistory;
-
-React.render((
-  <Router history={history}>
-    <Route path="/" component={Slides}>
-      <Route path="about" component={Slides}/>
-      <Route path="users" component={Slides}>
-        <Route path="/user/:userId" component={Slides}/>
-      </Route>
-      <Route path="*" component={Slides}/>
-    </Route>
-  </Router>
-), document.body);
+module.exports = Slides;

@@ -2,19 +2,27 @@ var React = require('react');
 
 var Intro = React.createClass({
 	style: {
-
+		'text-align': 'center'
+	},
+	logoStyles: {
+		'height': '50%',
+		'margin-left': 'auto'
 	},
 	render: function() {
 		return (
 			<div>
-				<div className="overlay">
-					<h3 style={this.style}>
+				<div style={this.style} className="overlay">
+					<h3>
 						React is library for building user interfaces	
 					</h3>
+					<img 
+						style={this.logoStyles}
+						src="https://raw.githubusercontent.com/wiki/facebook/react/react-logo-1000-transparent.png" 
+					/>
 				</div>
-				<div>
+				<div  className="overlay">
 					<p> 
-						It is maintained by Facebook, Instagram and a community of individual developers and corporations
+						It is maintained by Facebook, Instagram
 					</p>
 					<p>
 						Its goal is to be simple, declarative and composable. 

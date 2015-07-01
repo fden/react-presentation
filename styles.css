@@ -4,13 +4,20 @@ body {
     overflow:hidden;
 }
 
-li {
+
+p {
 	font-size: 4vh;
 }
 
 h2 {
 	font-size: 8vh;
 }
+
+
+li {
+	font-size: 4vh;
+}
+
 
 h3 {
 	font-size: 6vh;
