@@ -5,17 +5,23 @@ var VirtualDOM = require('./components/slides/virtualDOM');
 var View = require('./components/slides/view');
 var Components = require('./components/slides/components');
 var Integration = require('./components/slides/integration');
+var JSX = require('./components/slides/jsx');
 var Footer = require('./components/footer');
 var Header = require('./components/header');
+
+var ReactRouter = require('react-router');
+var Router = ReactRouter.Router;
+var Route = ReactRouter.Route;
+var Link = ReactRouter.Link;
 
 
 var Slides = React.createClass({
 	componentDidMount: function() {
-		window.addEventListener("onKeyDown", this.handleKeyDown, false);
+		window.addEventListener("keyup", this.handleKeyDown, false);
 	},
 
 	componentWillUnMount: function() {
-	    window.removeEventListener("onKeyDown", this.handleKeyDown, false)
+	    window.removeEventListener("keyup", this.handleKeyDown, false)
 	},
 
   getInitialState: function() {
@@ -35,7 +41,11 @@ var Slides = React.createClass({
 	      	{
 	      		slide: React.renderToString(<VirtualDOM />),
 	      		name: 'virtualDOM'
-	      	},	      	
+	      	},
+          {
+            slide: React.renderToString(<JSX />),
+            name: 'jsx'
+          },	      	
 	      	{
 	      		slide: React.renderToString(<View />),
 	      		name: 'view'
@@ -99,18 +109,22 @@ var Slides = React.createClass({
   }
 });
 
-React.render(
-  <Slides />,
-  document.getElementById('slides')
-);
+// React.render(
+//   <Slides />,
+//   document.getElementById('slides')
+// );
 
-// Route = ReactRouter.Route;
+// var Route = ReactRouter.Route;
+var history = ReactRouter.HashHistory;
 
-
-// React.render((
-//   <Route history={new HashHistory}>
-//     <Route path="/" component={Slides}>
-//       <Route path="/:slide" component={Slides}/>
-//     </Route>
-//   </Route>
-// ), document.body);
+React.render((
+  <Router history={history}>
+    <Route path="/" component={Slides}>
+      <Route path="about" component={Slides}/>
+      <Route path="users" component={Slides}>
+        <Route path="/user/:userId" component={Slides}/>
+      </Route>
+      <Route path="*" component={Slides}/>
+    </Route>
+  </Router>
+), document.body);

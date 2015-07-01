@@ -9,7 +9,7 @@ var Intro = React.createClass({
 			<div>
 				<div className="overlay">
 					<h3 style={this.style}>
-						React is library fo building user interfaces	
+						React is library for building user interfaces	
 					</h3>
 				</div>
 				<div>
@@ -21,9 +21,6 @@ var Intro = React.createClass({
 					</p>
 					<p>
 						Only handles the user interface in an app.
-					</p>
-					<p>
-						Used on the homepages of Report, Feedly, Airbnb and others
 					</p>
 				</div>
 			</div>
