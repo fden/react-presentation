@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv='Content-type' content='text/html; charset=utf-8'>
+    <title>React code</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body style="font-size:4vh;">
+  	<pre style="background:#f1f1f1;color:#000"><span style="color:#406040">/** @jsx React.DOM */</span>
+
+<span style="color:#a08000">var</span> ProductCategoryRow <span style="color:#2060a0">=</span> React.createClass({
+    <span style="color:maroon">render</span>: <span style="color:#a08000">function</span>() {
+        <span style="color:#2060a0">return</span> (<span style="color:#2060a0">&lt;</span>tr<span style="color:#2060a0">></span><span style="color:#2060a0">&lt;</span>th colSpan<span style="color:#2060a0">=</span><span style="color:#c03030">"2"</span><span style="color:#2060a0">></span>{this.props.category}<span style="color:#2060a0">&lt;</span>/th<span style="color:#2060a0">></span><span style="color:#2060a0">&lt;</span>/tr<span style="color:#2060a0">></span>);
+    }
+});
+
+<span style="color:#a08000">var</span> ProductRow <span style="color:#2060a0">=</span> React.createClass({
+    <span style="color:maroon">render</span>: <span style="color:#a08000">function</span>() {
+        <span style="color:#a08000">var</span> name <span style="color:#2060a0">=</span> this.props.product.stocked ?
+            this.props.product.name :
+            <span style="color:#2060a0">&lt;</span>span style<span style="color:#2060a0">=</span>{{color: <span style="color:#c03030">'red'</span>}}<span style="color:#2060a0">></span>
+                {this.props.product.name}
+            <span style="color:#2060a0">&lt;</span>/span<span style="color:#2060a0">></span>;
+        <span style="color:#2060a0">return</span> (
+            <span style="color:#2060a0">&lt;</span>tr<span style="color:#2060a0">></span>
+                <span style="color:#2060a0">&lt;</span>td<span style="color:#2060a0">></span>{name}<span style="color:#2060a0">&lt;</span>/td<span style="color:#2060a0">></span>
+                <span style="color:#2060a0">&lt;</span>td<span style="color:#2060a0">></span>{this.props.product.price}<span style="color:#2060a0">&lt;</span>/td<span style="color:#2060a0">></span>
+            <span style="color:#2060a0">&lt;</span>/tr<span style="color:#2060a0">></span>
+        );
+    }
+});
+
+<span style="color:#a08000">var</span> ProductTable <span style="color:#2060a0">=</span> React.createClass({
+    <span style="color:maroon">render</span>: <span style="color:#a08000">function</span>() {
+        console.log(this.props);
+        <span style="color:#a08000">var</span> rows <span style="color:#2060a0">=</span> [];
+        <span style="color:#a08000">var</span> lastCategory <span style="color:#2060a0">=</span> null;
+        this.props.products.forEach(<span style="color:#a08000">function</span>(product) {
+            <span style="color:#2060a0">if</span> (product.name.indexOf(this.props.filterText) <span style="color:#2060a0">===</span> <span style="color:#2060a0">-</span><span style="color:#0080a0">1</span> <span style="color:#2060a0">||</span> (<span style="color:#2060a0">!</span>product.stocked <span style="color:#2060a0">&amp;</span><span style="color:#2060a0">&amp;</span> this.props.inStockOnly)) {
+                <span style="color:#2060a0">return</span>;
+            }
+            <span style="color:#2060a0">if</span> (product.category <span style="color:#2060a0">!</span><span style="color:#2060a0">==</span> lastCategory) {
+                rows.push(<span style="color:#2060a0">&lt;</span>ProductCategoryRow category<span style="color:#2060a0">=</span>{product.category} key<span style="color:#2060a0">=</span>{product.category} /<span style="color:#2060a0">></span>);
+            }
+            rows.push(<span style="color:#2060a0">&lt;</span>ProductRow product<span style="color:#2060a0">=</span>{product} key<span style="color:#2060a0">=</span>{product.name} /<span style="color:#2060a0">></span>);
+            lastCategory <span style="color:#2060a0">=</span> product.category;
+        }.bind(this));
+        <span style="color:#2060a0">return</span> (
+            <span style="color:#2060a0">&lt;</span>table<span style="color:#2060a0">></span>
+                <span style="color:#2060a0">&lt;</span>thead<span style="color:#2060a0">></span>
+                    <span style="color:#2060a0">&lt;</span>tr<span style="color:#2060a0">></span>
+                        <span style="color:#2060a0">&lt;</span>th<span style="color:#2060a0">></span>Name<span style="color:#2060a0">&lt;</span>/th<span style="color:#2060a0">></span>
+                        <span style="color:#2060a0">&lt;</span>th<span style="color:#2060a0">></span>Price<span style="color:#2060a0">&lt;</span>/th<span style="color:#2060a0">></span>
+                    <span style="color:#2060a0">&lt;</span>/tr<span style="color:#2060a0">></span>
+                <span style="color:#2060a0">&lt;</span>/thead<span style="color:#2060a0">></span>
+                <span style="color:#2060a0">&lt;</span>tbody<span style="color:#2060a0">></span>{rows}<span style="color:#2060a0">&lt;</span>/tbody<span style="color:#2060a0">></span>
+            <span style="color:#2060a0">&lt;</span>/table<span style="color:#2060a0">></span>
+        );
+    }
+});
+
+<span style="color:#a08000">var</span> SearchBar <span style="color:#2060a0">=</span> React.createClass({
+    <span style="color:maroon">handleChange</span>: <span style="color:#a08000">function</span>() {
+        this.props.onUserInput(
+            this.refs.filterTextInput.getDOMNode().value,
+            this.refs.inStockOnlyInput.getDOMNode().checked
+        );
+    },
+    <span style="color:maroon">render</span>: <span style="color:#a08000">function</span>() {
+        <span style="color:#2060a0">return</span> (
+            <span style="color:#2060a0">&lt;</span>form<span style="color:#2060a0">></span>
+                <span style="color:#2060a0">&lt;</span>input
+                    type<span style="color:#2060a0">=</span><span style="color:#c03030">"text"</span>
+                    placeholder<span style="color:#2060a0">=</span><span style="color:#c03030">"Search..."</span>
+                    value<span style="color:#2060a0">=</span>{this.props.filterText}
+                    ref<span style="color:#2060a0">=</span><span style="color:#c03030">"filterTextInput"</span>
+                    onChange<span style="color:#2060a0">=</span>{this.handleChange}
+<span style="color:#c03030">                />
+                &lt;p>
+                    &lt;input
+                        type="checkbox"
+                        checked={this.props.inStockOnly}
+                        ref="inStockOnlyInput"
+                        onChange={this.handleChange}
+                    /</span><span style="color:#2060a0">></span>
+                    {<span style="color:#c03030">' '</span>}
+                    Only show products <span style="color:#2060a0">in</span> stock
+                <span style="color:#2060a0">&lt;</span>/p<span style="color:#2060a0">></span>
+            <span style="color:#2060a0">&lt;</span>/form<span style="color:#2060a0">></span>
+        );
+    }
+});
+
+<span style="color:#a08000">var</span> FilterableProductTable <span style="color:#2060a0">=</span> React.createClass({
+    <span style="color:maroon">getInitialState</span>: <span style="color:#a08000">function</span>() {
+        <span style="color:#2060a0">return</span> {
+            filterText: <span style="color:#c03030">''</span>,
+            inStockOnly: false
+        };
+    },
+
+    <span style="color:maroon">handleUserInput</span>: <span style="color:#a08000">function</span>(filterText, inStockOnly) {
+        this.setState({
+            filterText: filterText,
+            inStockOnly: inStockOnly
+        });
+    },
+
+    <span style="color:maroon">render</span>: <span style="color:#a08000">function</span>() {
+        <span style="color:#2060a0">return</span> (
+            <span style="color:#2060a0">&lt;</span>div<span style="color:#2060a0">></span>
+                <span style="color:#2060a0">&lt;</span>SearchBar
+                    filterText<span style="color:#2060a0">=</span>{this.state.filterText}
+                    inStockOnly<span style="color:#2060a0">=</span>{this.state.inStockOnly}
+                    onUserInput<span style="color:#2060a0">=</span>{this.handleUserInput}
+<span style="color:#c03030">                />
+                &lt;ProductTable
+                    products={this.props.products}
+                    filterText={this.state.filterText}
+                    inStockOnly={this.state.inStockOnly}
+                /</span><span style="color:#2060a0">></span>
+            <span style="color:#2060a0">&lt;</span>/div<span style="color:#2060a0">></span>
+        );
+    }
+});
+
+
+<span style="color:#a08000">var</span> PRODUCTS <span style="color:#2060a0">=</span> [
+  {category: <span style="color:#c03030">'Sporting Goods'</span>, price: <span style="color:#c03030">'$49.99'</span>, stocked: true, name: <span style="color:#c03030">'Football'</span>},
+  {category: <span style="color:#c03030">'Sporting Goods'</span>, price: <span style="color:#c03030">'$9.99'</span>, stocked: true, name: <span style="color:#c03030">'Baseball'</span>},
+  {category: <span style="color:#c03030">'Sporting Goods'</span>, price: <span style="color:#c03030">'$29.99'</span>, stocked: false, name: <span style="color:#c03030">'Basketball'</span>},
+  {category: <span style="color:#c03030">'Electronics'</span>, price: <span style="color:#c03030">'$99.99'</span>, stocked: true, name: <span style="color:#c03030">'iPod Touch'</span>},
+  {category: <span style="color:#c03030">'Electronics'</span>, price: <span style="color:#c03030">'$399.99'</span>, stocked: false, name: <span style="color:#c03030">'iPhone 5'</span>},
+  {category: <span style="color:#c03030">'Electronics'</span>, price: <span style="color:#c03030">'$199.99'</span>, stocked: true, name: <span style="color:#c03030">'Nexus 7'</span>}
+];
+
+React.render(<span style="color:#2060a0">&lt;</span>FilterableProductTable products<span style="color:#2060a0">=</span>{PRODUCTS} /<span style="color:#2060a0">></span>, document.body);
+
+</pre>
+  </body>
+</html>

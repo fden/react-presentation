@@ -5,23 +5,25 @@ body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-
 p {
-	font-size: 4vh;
+	font-size: 5vh;
 }
 
 h2 {
 	font-size: 8vh;
 }
 
+h3 {
+	font-size: 6vh;
+}
 
 li {
+	margin: 3% 0;
 	font-size: 4vh;
 }
 
-
-h3 {
-	font-size: 6vh;
+.hidden {
+	display: none;
 }
 
 .overlay {
@@ -31,8 +33,4 @@ h3 {
 
 .slide {
   padding: 3% 4% 0 8%;
-}
-
-.hidden {
-	display: none;
 }

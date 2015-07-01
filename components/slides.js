@@ -38,39 +38,35 @@ componentDidUpdate: function() {
     	menuVisible: false,
 	    slides: [
 	      	{ 
-	      		slide: React.renderToString(<Intro />),
+	      		slide: <Intro />,
 	      		name: 'intro'
 	      	},
 	      	{
-	      		slide: React.renderToString(<Overview />),
+	      		slide: <Overview />,
 	      		name: 'overview'
 	      	},	      	
 	      	{
-	      		slide: React.renderToString(<VirtualDOM />),
+	      		slide: <VirtualDOM />,
 	      		name: 'virtualDOM'
 	      	},
           	{
-            	slide: React.renderToString(<JSX />),
+            	slide: <JSX />,
             	name: 'jsx'
-          	},	      	
-	      	// {
-	      	// 	slide: React.renderToString(<DataFlow />),
-	      	// 	name: 'dataFlow'
-	      	// },	      	
+          	},	      		      	
 	      	{
-	      		slide: React.renderToString(<Components />),
+	      		slide: <Components />,
 	      		name: 'components'
 	      	},
-          {
-            slide: React.renderToString(<Integration />),
-            name: 'integration'
-          },
-          {
-            slide: React.renderToString(<Demo />),
-            name: 'demo'
-          },
-          {
-	      		slide: React.renderToString(<Flux />),
+          	{
+            	slide: <Integration />,
+            	name: 'integration'
+          	},
+          	{
+            	slide: <Demo />,
+            	name: 'demo'
+          	},
+          	{
+	      		slide: <Flux />,
 	      		name: 'flux'
 	      	},
       	]
@@ -94,6 +90,7 @@ componentDidUpdate: function() {
   },
 
   _nextPage: function(){
+    window.scrollTo(0, 0);
   	if (this.state.current < this.state.slides.length-1 ) {
   		this.setState({current: this.state.current+1});
   	}
@@ -119,10 +116,11 @@ componentDidUpdate: function() {
       <div>
       	<Footer nextPage={this._nextPage} prevPage={this._prevPage} visible={this.state.menuVisible}/>
       	<Header slides={this.state} active={this.state.menu} setPage={this._setPage} visible={this.state.menuVisible}/>
-      	<div className="slide" dangerouslySetInnerHTML={{ __html: slide }} />
+      	<div className="slide">{slide}</div>
       </div>
     );
   }
 });
+      	// <div className="slide" dangerouslySetInnerHTML={{ __html: slide }} />
 
 module.exports = Slides;
