@@ -18,14 +18,11 @@
   },
   "homepage": "https://github.com/fden/react-presentation",
   "devDependencies": {
-
+    "webpack-dev-server": "^1.10.1"
   },
   "dependencies": {
     "ejs": "^2.3.2",
     "express": "^4.13.0",
-    "marked": "^0.3.3",
-    "react-markdown-file": "0.0.4",
-    "react-markdown-textarea": "^1.0.0",
     "webpack": "^1.10.0",
     "jsx-loader": "^0.13.2",
     "browserify": "^10.2.4",
@@ -39,7 +36,6 @@
     "react-markdown": "^1.0.3",
     "react-router": "^0.13.3",
     "reactify": "^1.1.1",
-    "vinyl-source-stream": "^1.1.0",
-    "webpack-dev-server": "^1.10.1"
+    "vinyl-source-stream": "^1.1.0"
   }
 }

@@ -2,7 +2,9 @@ var React = require('react');
 var Intro = require('./slides/intro');
 var Overview = require('./slides/overview');
 var VirtualDOM = require('./slides/virtualDOM');
-var View = require('./slides/view');
+var DataFlow = require('./slides/dataFlow');
+var Flux = require('./slides/flux');
+var Demo = require('./slides/demo');
 var Components = require('./slides/components');
 var Integration = require('./slides/integration');
 var JSX = require('./slides/jsx');
@@ -18,7 +20,17 @@ var Slides = React.createClass({
 	componentWillUnMount: function() {
 	    window.removeEventListener("keyup", this.handleKeyDown, false)
 	},
-
+componentWillUpdate: function() {
+  var node = this.getDOMNode();
+  this.shouldScrollBottom = node.scrollTop + node.offsetHeight === node.scrollHeight;
+},
+ 
+componentDidUpdate: function() {
+  if (this.shouldScrollBottom) {
+    var node = this.getDOMNode();
+    node.scrollTop = node.scrollHeight
+  }
+},
   getInitialState: function() {
     return {
     	menu: false,
@@ -37,20 +49,29 @@ var Slides = React.createClass({
 	      		slide: React.renderToString(<VirtualDOM />),
 	      		name: 'virtualDOM'
 	      	},
-          {
-            slide: React.renderToString(<JSX />),
-            name: 'jsx'
-          },	      	
+          	{
+            	slide: React.renderToString(<JSX />),
+            	name: 'jsx'
+          	},	      	
+	      	// {
+	      	// 	slide: React.renderToString(<DataFlow />),
+	      	// 	name: 'dataFlow'
+	      	// },	      	
 	      	{
-	      		slide: React.renderToString(<View />),
-	      		name: 'view'
-	      	},	      	{
 	      		slide: React.renderToString(<Components />),
 	      		name: 'components'
 	      	},
-	      	{
-	      		slide: React.renderToString(<Integration />),
-	      		name: 'integration'
+          {
+            slide: React.renderToString(<Integration />),
+            name: 'integration'
+          },
+          {
+            slide: React.renderToString(<Demo />),
+            name: 'demo'
+          },
+          {
+	      		slide: React.renderToString(<Flux />),
+	      		name: 'flux'
 	      	},
       	]
     };

@@ -11,6 +11,15 @@ var VirtualDOM = React.createClass({
 					<h2>
 						Virtual DOM
 					</h2>
+					<p>
+						Rerendreing when data changes
+					</p>
+					<p>
+						Use diff algorythm
+					</p>
+					<p>
+						Efficient update of sub-tree only.
+					</p>
 				</div>
 				<div  className="overlay">
 					<img
