@@ -6,6 +6,7 @@ var concat = require('gulp-concat');
 var browserify = require('browserify');
 var source = require("vinyl-source-stream");
 var reactify = require('reactify');
+var connect = require('gulp-connect');
 
 gulp.task('browserify', function(){
   var b = browserify();
@@ -26,6 +27,13 @@ gulp.task('scripts', ['clean'], function () {
         .pipe(gulp.dest('./build'));
 });
 
+gulp.task('connect', function () {
+    connect.server({
+        root: './',
+        port: 8001,
+        livereload: true
+    });
+});
  
 gulp.task('clean', function () {
   return gulp.src('build/*', {read: false})
@@ -33,3 +41,4 @@ gulp.task('clean', function () {
 });
 
 gulp.task('default', ['browserify']);
+gulp.task('server', ['browserify', 'connect']);
