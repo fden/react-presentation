@@ -5,7 +5,7 @@ var Markdown = require('react-markdown');
 var Jsx = React.createClass({
 	getInitialState: function() {
         return {
-            mdSrc: '# jsx'
+            mdSrc: ''
         };
     },
 	render: function() {
@@ -17,7 +17,6 @@ var Jsx = React.createClass({
                     <p>Similar to HTML</p>
                     <p>JSX transforms from an XML-like syntax into native JavaScript</p>
                 </div>
-                <img />
 			    <Markdown source={this.state.mdSrc} />
             </div>
 		);
